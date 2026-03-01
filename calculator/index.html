@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Калькулятор температурных швов</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="hero card">
+        <p class="eyebrow">ENGINEERING TOOLKIT</p>
+        <h1>Калькулятор температурных швов</h1>
+        <p class="subtitle">СП РК EN 1991-1-5 • расчет + экспорт отчетов</p>
+      </header>
+
+      <form id="calc-form" class="card form-card">
+        <label>
+          Город
+          <input type="text" id="city" required placeholder="Например, Астана" value="Астана" />
+        </label>
+
+        <label>
+          Тип здания
+          <select id="buildingType" required>
+            <option value="rc" selected>Железобетон (rc)</option>
+            <option value="steel">Металл (steel)</option>
+            <option value="brick">Кирпич (brick)</option>
+          </select>
+        </label>
+
+        <label>
+          Режим эксплуатации
+          <select id="heating" required>
+            <option value="heated" selected>Отапливаемое (heated)</option>
+            <option value="unheated">Неотапливаемое (unheated)</option>
+          </select>
+        </label>
+
+        <label>
+          Длина здания, м
+          <input type="number" id="length" step="0.01" min="0.01" required value="120" />
+        </label>
+
+        <label>
+          Начальная температура T0, °C
+          <input type="number" id="t0" step="0.01" required value="10" />
+        </label>
+
+        <label>
+          Максимальная температура Tmax, °C
+          <input type="number" id="tmax" step="0.01" required value="38" />
+        </label>
+
+        <label>
+          Минимальная температура Tmin, °C
+          <input type="number" id="tmin" step="0.01" required value="-42" />
+        </label>
+
+        <div class="actions">
+          <button type="submit" class="btn-primary">Рассчитать</button>
+          <button type="button" id="downloadDoc" class="btn-secondary" disabled>Скачать Word отчет (.docx)</button>
+          <button type="button" id="downloadPdf" class="btn-secondary" disabled>Скачать PDF отчет</button>
+        </div>
+      </form>
+
+      <section id="results" class="card results-card hidden" aria-live="polite">
+        <h2>Результаты расчета</h2>
+        <ul id="resultList"></ul>
+      </section>
+    </main>
+
+    <script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.10/build/pdfmake.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pdfmake@0.2.10/build/vfs_fonts.js"></script>
+    <script src="calc-core.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,246 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@400;600&display=swap");
+
+:root {
+  --bg: #f2efe7;
+  --panel: #fffdf8;
+  --ink: #111111;
+  --muted: #313131;
+  --line: #111111;
+  --accent: #ff4d00;
+  --accent-2: #0e64ff;
+  --ok: #0b8f43;
+  --shadow-hard: 6px 6px 0 #111111;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(90deg, rgba(17, 17, 17, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(17, 17, 17, 0.06) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.container {
+  width: min(980px, 100%);
+  margin: 0 auto;
+  padding: 18px 14px 36px;
+  display: grid;
+  gap: 14px;
+}
+
+.card {
+  background: var(--panel);
+  border: 3px solid var(--line);
+  border-radius: 0;
+  box-shadow: var(--shadow-hard);
+}
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 18px;
+  background:
+    linear-gradient(160deg, #fffdf8 0%, #fffdf8 74%, #ffe8dc 74%, #ffe8dc 100%);
+}
+
+.hero::after {
+  content: "v1.0";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  border: 2px solid var(--line);
+  padding: 2px 6px;
+  background: #fff;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  display: inline-block;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  border: 2px solid var(--line);
+  background: #fff;
+  padding: 3px 7px;
+}
+
+h1 {
+  margin: 0;
+  line-height: 1.02;
+  font-size: clamp(1.55rem, 3.4vw, 2.5rem);
+  text-wrap: balance;
+}
+
+.subtitle {
+  margin: 10px 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.form-card {
+  padding: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.87rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input,
+select {
+  width: 100%;
+  border: 2px solid var(--line);
+  border-radius: 0;
+  background: #fff;
+  min-height: 44px;
+  padding: 9px 10px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.95rem;
+}
+
+input:focus,
+select:focus,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px #fff, 0 0 0 6px var(--accent-2);
+}
+
+.actions {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+button {
+  min-height: 44px;
+  padding: 10px 13px;
+  border: 2px solid var(--line);
+  border-radius: 0;
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  transition: transform 90ms ease, box-shadow 90ms ease;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 3px 3px 0 #111111;
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 3px 3px 0 #111111;
+}
+
+button:hover:enabled {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #111111;
+}
+
+button:active:enabled {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #111111;
+}
+
+button:disabled {
+  opacity: 1;
+  background: #e8e5de;
+  color: #666;
+  border-color: #666;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.results-card {
+  padding: 14px;
+}
+
+h2 {
+  margin: 0 0 10px;
+  font-size: 1.02rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+#resultList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.93rem;
+}
+
+#resultList li {
+  border: 2px solid var(--line);
+  background: #fff;
+  padding: 8px 9px;
+}
+
+#resultList li:nth-child(4),
+#resultList li:nth-child(5),
+#resultList li:nth-child(6),
+#resultList li:nth-child(7),
+#resultList li:nth-child(8) {
+  background: #f4ffef;
+  border-color: var(--ok);
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .container {
+    padding: 12px 10px 24px;
+  }
+
+  .hero,
+  .form-card,
+  .results-card {
+    box-shadow: 4px 4px 0 #111111;
+  }
+
+  .form-card {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
